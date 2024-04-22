@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.960ca62b.css",
+    "main.js": "/static/js/main.cc10fd37.js",
+    "static/js/787.1937f22b.chunk.js": "/static/js/787.1937f22b.chunk.js",
+    "static/media/Qrcode.png": "/static/media/Qrcode.688f7661e317a0a7f809.png",
+    "static/media/school2.jpeg": "/static/media/school2.70ae4bc0055e795f6a55.jpeg",
+    "static/media/graduation5.jpeg": "/static/media/graduation5.05a5c63f2dc4ceb47207.jpeg",
+    "static/media/skills1.jpeg": "/static/media/skills1.310e60a7e1b4f9a90b4f.jpeg",
+    "index.html": "/index.html",
+    "main.960ca62b.css.map": "/static/css/main.960ca62b.css.map",
+    "main.cc10fd37.js.map": "/static/js/main.cc10fd37.js.map",
+    "787.1937f22b.chunk.js.map": "/static/js/787.1937f22b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.960ca62b.css",
+    "static/js/main.cc10fd37.js"
+  ]
+}

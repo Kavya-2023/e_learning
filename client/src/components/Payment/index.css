@@ -1,0 +1,82 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #268fe4ee;
+    /* Blue background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    /* Box shadow for card effect */
+    width: 500px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    /* Adjust width of the form */
+}
+
+.header {
+    font-size: 35px;
+    color: #ffffff;
+    font-family: monospace;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #ffffff;
+    /* White color for labels */
+}
+
+input[type='text'],
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    /* Full width input fields */
+    background-color: #ffffff;
+    /* White color for input fields */
+}
+
+.qr-logo {
+    width: 400px;
+}
+
+.pay-button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    /* White color for button */
+    color: #007bff;
+    /* Blue color for button text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.pay-button:hover{
+    background-color: #f0f0f0;
+    /* Light gray background on hover */
+}

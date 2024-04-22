@@ -1,0 +1,26 @@
+.careers-container {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.careers-container h2 {
+  color: #333;
+}
+
+.careers-container p {
+  font-size: 18px;
+  color: #666;
+}
+
+.careers-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.careers-container a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,53 @@
+.about-us-section{
+    background: aquamarine;
+    height: 60vh;
+    padding-top: 27rem;
+    display: flex;
+    justify-content: center;
+}
+.container-1{
+    width: 800px;
+    max-width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.container-1 h2{
+    background-color: aquamarine;
+    font-size: 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.container-1 p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.about-us-section .container-1 .mission-statement::first-letter {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 810px) {
+    .container-1 {
+        width: 90%;
+    }
+    .about-us-section{
+        padding-top: 25rem;
+        height: 30vh;
+    }
+        .container-1 p{
+            font-size: 1rem;
+        }
+}
+@media screen and (max-width:410px){
+    .about-us-section{
+        height: 20vh;
+    }
+    .container-1 p {
+            font-size: .8rem;
+    }
+    .container-1 h2{
+        font-size: 1rem;
+    }
+}
