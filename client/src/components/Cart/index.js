@@ -41,7 +41,7 @@ const Cart = () => {
             const orderId = validateRes.data.orderId;
             const paymentId = validateRes.data.paymentId;
 
-            axios.post('http://localhost:5000/enroll/createpaidcourses', {
+            axios.post('https://e-learning-1-jycy.onrender.com/enroll/createpaidcourses', {
               email,
               course_ids: courseIds, 
               order_id: orderId,
