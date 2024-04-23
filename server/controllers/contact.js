@@ -23,7 +23,7 @@ export const sendEmail = async (req, res) => {
 
         // Send email to support@nanoquesttech.in
         await transporter.sendMail({
-            from: 'NanoQuestTech Contact Page <support@nanoquesttech.in>',
+            from: email,
             to: 'nanoquest43@gmail.com',
             subject: 'New Contact Details',
             text: message,

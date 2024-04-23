@@ -41,7 +41,7 @@ const Cart = () => {
             const orderId = validateRes.data.orderId;
             const paymentId = validateRes.data.paymentId;
 
-            axios.post('https://e-learning-1-jycy.onrender.com/enroll/createpaidcourses', {
+            axios.post('http://localhost:5000/enroll/createpaidcourses', {
               email,
               course_ids: courseIds, 
               order_id: orderId,
@@ -50,14 +50,14 @@ const Cart = () => {
             .then(res => {
               if (res.data.success) {
                 console.log("Courses added successfully");
-                clearCart(); // Clear cart after adding courses
+                clearCart(); 
               } else {
                 console.error("Failed to add courses:", res.data.message);
               }
             })
             .catch(err => {
               console.error("Error adding courses:", err);
-              clearCart(); // Clear cart in case of error
+              clearCart();
             });
           })
           .catch(error => {

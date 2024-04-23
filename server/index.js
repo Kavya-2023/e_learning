@@ -56,7 +56,21 @@ app.post("/order", async (req, res) => {
     }
 });
 
-// The order validation route remains the same
+app.post('/order/validate', async (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+    const sha = crypto.createHmac("sha256", "3sNQy668X3KugreFfmHfvYqC");
+    sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+    const signature = sha.digest("hex");
+    if (signature !== razorpay_signature) {
+        return res.status(400).json({ msg: "Transaction is not legit!" });
+    }
+    res.json({
+        msg: "success",
+        orderId: razorpay_order_id,
+        paymentId: razorpay_payment_id
+    });
+});
 
 app.get('/user/profile', async (req, res) => {
     const { email } = req.query;

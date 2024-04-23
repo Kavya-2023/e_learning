@@ -83,7 +83,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href='https://www.youtube.com/NANOQUEST ET' className="social-link" target="_blank" rel="noopener noreferrer">
+              <a href='youtube.com/shorts/2zRkc4utsLM' className="social-link" target="_blank" rel="noopener noreferrer">
                 <img src={youtube} alt="YouTube" className="social-img" title="youtube"/>
               </a>
             </li>

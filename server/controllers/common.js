@@ -33,7 +33,7 @@ export const sendLoginMail = async (transporter,email,link) => {
         }
     try {
         const info = await transporter.sendMail({
-            from: "nanoquesttech@gmail.com",
+            from: "nanoquest43@gmail.com",
             to:email,
             subject: "Reset Password",
             html:`Reset your password by using this link:${link}`,
