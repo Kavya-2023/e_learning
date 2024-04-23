@@ -16,7 +16,7 @@ const Cart = () => {
   const totalAmount = totalCost * 100; // Convert total cost to cents
 
   // Make a request to create a new order
-  axios.post(`http://localhost:5000/order`, {
+  axios.post(`https://e-learning-1-jycy.onrender.com/order`, {
     amount: totalAmount,
     currency: "INR",
     receipt: "sdfghbfg",
@@ -35,13 +35,13 @@ const Cart = () => {
       order_id: order.id,
       handler: function (response) {
         // Upon successful payment, enroll the user in the selected courses
-        axios.post('http://localhost:5000/order/validate', response)
+        axios.post('https://e-learning-1-jycy.onrender.com/order/validate', response)
           .then(validateRes => {
             // If payment is validated successfully, proceed to course enrollment
             const orderId = validateRes.data.orderId;
             const paymentId = validateRes.data.paymentId;
 
-            axios.post('http://localhost:5000/enroll/createpaidcourses', {
+            axios.post('https://e-learning-1-jycy.onrender.com/enroll/createpaidcourses', {
               email,
               course_ids: courseIds, 
               order_id: orderId,
@@ -103,7 +103,7 @@ const Cart = () => {
 
   const onRemove = (course_id) => {
     const email = localStorage.getItem("email");
-    axios.delete(`http://localhost:5000/enroll/removecourse?email=${email}&course_id=${course_id}`)
+    axios.delete(`https://e-learning-1-jycy.onrender.com/enroll/removecourse?email=${email}&course_id=${course_id}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           fetchEnrolledCourses();
@@ -119,7 +119,7 @@ const Cart = () => {
 
   const clearCart = () => {
     const email = localStorage.getItem("email");
-    axios.delete(`http://localhost:5000/enroll/clearcart?email=${email}`)
+    axios.delete(`https://e-learning-1-jycy.onrender.com/enroll/clearcart?email=${email}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           console.log("Cart cleared successfully");
@@ -140,7 +140,7 @@ const Cart = () => {
 
   const fetchEnrolledCourses = () => {
     const email = localStorage.getItem("email");
-    axios.get(`http://localhost:5000/enroll/enrolledcourses?email=${email}`)
+    axios.get(`https://e-learning-1-jycy.onrender.com/enroll/enrolledcourses?email=${email}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           const courses = res.data.enrolledCourses;

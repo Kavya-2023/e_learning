@@ -20,10 +20,16 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in'];
 app.use(cors({
-    origin: "http://localhost:3000",
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true
+  origin: function(origin, callback) {
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use('/user', userRoutes);

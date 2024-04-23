@@ -20,13 +20,13 @@ const NavBar11 = () => {
 
   const fetchUserData = async () => {
   try {
-    const userResponse = await axios.get('http://localhost:5000/user/profile', {
+    const userResponse = await axios.get('https://e-learning-1-jycy.onrender.com/user/profile', {
       params: {
         email: userEmail
       }
     });
 
-    const coursesResponse = await axios.get('http://localhost:5000/course/getpaidcourses', {
+    const coursesResponse = await axios.get('https://e-learning-1-jycy.onrender.com/course/getpaidcourses', {
       params: {
         email: userEmail
       }
@@ -86,7 +86,7 @@ const NavBar11 = () => {
           </Link>
           <ul className={`dropdown ${isDropdownOpen ? 'active' : ''}`}>
             <li><Link to="/aboutus">About us</Link></li>
-            <li><Link to="/team">Teams</Link></li>
+            <li><Link to="/teams">Teams</Link></li>
             <li><Link to="/contactus">Contact Us</Link></li>
             <li><Link to="/careers">Careers</Link></li>
           </ul>

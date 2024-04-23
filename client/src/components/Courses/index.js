@@ -45,7 +45,7 @@ const Courses = () => {
   const addToCart = async (course_id, course_name, course_price) => {
     const email = localStorage.getItem("email");
     try {
-      const response = await axios.post('http://localhost:5000/enroll/enroll', { email,  course_id: course_id.toString(), course_name, course_price });
+      const response = await axios.post('https://e-learning-1-jycy.onrender.com/enroll/enroll', { email,  course_id: course_id.toString(), course_name, course_price });
       if (response.data.success === true) {
         console.log("Added successfully");
         navigate('/cart')
