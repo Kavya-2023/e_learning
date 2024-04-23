@@ -2,7 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import crypto from 'crypto';
-
 import Razorpay from 'razorpay';
 import dotenv from 'dotenv';
 
@@ -18,22 +17,14 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-app.set("view engine", "ejs");
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
-
-
-const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in','https://e-learning-1-jycy.onrender.com'];
+// CORS configuration
+const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in', 'https://e-learning-1-jycy.onrender.com'];
 app.use(cors({
   origin: function(origin, callback) {
-
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -42,11 +33,13 @@ app.use(cors({
   }
 }));
 
+// Routes
 app.use('/user', userRoutes);
 app.use('/course', courseRoutes);
 app.use('/enroll', enrollRoutes);
 app.use('/contactus', contactusRoutes);
 
+// Razorpay order creation endpoint
 app.post("/order", async (req, res) => {
     try {
         const razorpay = new Razorpay({
@@ -57,24 +50,27 @@ app.post("/order", async (req, res) => {
         const order = await razorpay.orders.create(options);
 
         if (!order) {
-            return res.status(500).send("Error");
+            return res.status(500).send("Error creating order");
         }
         res.json(order);
     } catch (err) {
-        console.log(err);
-        res.status(500).send("Error");
+        console.error(err);
+        res.status(500).send("Error creating order");
     }
 });
 
+// Razorpay order validation endpoint
 app.post('/order/validate', async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-    const sha = crypto.createHmac("sha256", "3sNQy668X3KugreFfmHfvYqC");
+    const sha = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET);
     sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
     const signature = sha.digest("hex");
+
     if (signature !== razorpay_signature) {
         return res.status(400).json({ msg: "Transaction is not legit!" });
     }
+
     res.json({
         msg: "success",
         orderId: razorpay_order_id,
@@ -82,6 +78,7 @@ app.post('/order/validate', async (req, res) => {
     });
 });
 
+// Retrieve user profile endpoint
 app.get('/user/profile', async (req, res) => {
     const { email } = req.query;
 
@@ -91,6 +88,7 @@ app.get('/user/profile', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+
         return res.status(200).json(user);
     } catch (error) {
         console.error(error);
@@ -100,10 +98,10 @@ app.get('/user/profile', async (req, res) => {
 
 // Connection to MongoDB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to DB'))
-    .catch(err => console.log(err));
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-// Server connection
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on the port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
