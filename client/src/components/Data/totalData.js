@@ -1,5 +1,28 @@
 export const totalData=[
   {
+    "_id": "66260b99476fb240cca46442",
+    "id": 2,
+    "category": "Mathematics",
+    "courses": [
+      {
+        "course": "Basic Math Skills and Concepts",
+        "price_in_rupees": 499,
+        "_id": "66260b99476fb240cca46443"
+      },
+      {
+        "course": "Introduction to Geometry and Shapes",
+        "price_in_rupees": 99,
+        "_id": "66260b99476fb240cca46444"
+      },
+      {
+        "course": "Math Games and Puzzles",
+        "price_in_rupees": 199,
+        "_id": "66260b99476fb240cca46445"
+      }
+    ],
+    "__v": 0
+  },
+  {
     "_id": "66260b99476fb240cca464d9",
     "id": 25,
     "category": "Argument Reality",
@@ -48,29 +71,7 @@ export const totalData=[
     "courses": [],
     "__v": 0
   },
-  {
-    "_id": "66260b99476fb240cca46442",
-    "id": 2,
-    "category": "Mathematics",
-    "courses": [
-      {
-        "course": "Basic Math Skills and Concepts",
-        "price_in_rupees": 499,
-        "_id": "66260b99476fb240cca46443"
-      },
-      {
-        "course": "Introduction to Geometry and Shapes",
-        "price_in_rupees": 99,
-        "_id": "66260b99476fb240cca46444"
-      },
-      {
-        "course": "Math Games and Puzzles",
-        "price_in_rupees": 199,
-        "_id": "66260b99476fb240cca46445"
-      }
-    ],
-    "__v": 0
-  },
+  
   {
     "_id": "66260b99476fb240cca4643e",
     "id": 1,

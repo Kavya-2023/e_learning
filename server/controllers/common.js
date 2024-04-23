@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 export const configuremail = async () => {
     try {
         let smtpAuth = {
-            user: "nanoquesttech@gmail.com",
-            pass: "vbll xhsw sxyc cygf",
+            user: "nanoquest43@gmail.com",
+            pass: "uied mssc ytff sapn",
         };
         let smtpConfig = {
             service: 'gmail',

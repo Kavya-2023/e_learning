@@ -2,28 +2,41 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../Navbar11';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
-import { totalData } from '../Data/totalData.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const Courses = () => {
-  const [currentCategory, setCurrentCategory] = useState();
+  const [currentCategory, setCurrentCategory] = useState(null);
+  const [totalData, setTotalData] = useState([]);
   const [currentCourses, setCurrentCourses] = useState([]);
   const [filterType, setFilterType] = useState(localStorage.getItem('filterType') || "All");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const initialCategory = totalData[7]; 
-    setCurrentCategory(initialCategory);
-    setCurrentCourses(applyFilter(initialCategory));
-  }, []); 
+    fetchTotalData();
+  }, []);
 
   useEffect(() => {
     setCurrentCourses(applyFilter(currentCategory));
   }, [currentCategory, filterType]);
 
+  const fetchTotalData = async () => {
+    try {
+      const response = await axios.get('https://e-learning-1-jycy.onrender.com/course/getallcourses');
+      if (response.status === 200) {
+        setTotalData(response.data);
+        setCurrentCategory(response.data[0]); // Set initial category
+      } else {
+        console.error("Failed to fetch total data");
+      }
+    } catch (error) {
+      console.error("Error fetching total data:", error);
+    }
+  };
+
   const applyFilter = (category) => {
-    if (!category) return [];
+    if (!category || !category.courses) return [];
     
     let filteredCourses = category.courses;
     if (filterType === "Free") {
@@ -48,7 +61,7 @@ const Courses = () => {
       const response = await axios.post('https://e-learning-1-jycy.onrender.com/enroll/enroll', { email,  course_id: course_id.toString(), course_name, course_price });
       if (response.data.success === true) {
         console.log("Added successfully");
-        navigate('/cart')
+        navigate('/cart');
       } else {
         console.log("Error: Not added");
       }

@@ -8,7 +8,6 @@ const Contactus = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const userEmail = localStorage.getItem("email");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

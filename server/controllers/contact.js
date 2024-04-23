@@ -11,7 +11,7 @@ export const contactus = async (req, res) => {
     }
 };
 
-export const sendemail = async (req, res) => {
+export const sendEmail = async (req, res) => {
     const {name, email, phoneNumber } = req.body;
 
     // Compose the email message
